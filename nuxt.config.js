@@ -3,6 +3,8 @@ export default {
     port: 8008
   },
 
+  target: 'static',
+
   ssr: true,
 
   modern: 'client',
@@ -21,7 +23,12 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    bodyAttrs: {
+      class: [
+        'font-sans font-medium bg-light-surface dark:bg-dark-surface text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear'
+      ]
+    }
   },
 
   /*
@@ -55,6 +62,10 @@ export default {
    */
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/dotenv'],
 
+  colorMode: {
+    preference: 'dark' // disable system
+  },
+
   /*
    ** Axios module configuration
    */
@@ -69,5 +80,9 @@ export default {
         autoprefixer: {}
       }
     }
+  },
+
+  generate: {
+    fallback: '404.html' // for Netlify
   }
 };
