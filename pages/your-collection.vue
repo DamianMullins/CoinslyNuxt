@@ -18,11 +18,7 @@
         <div class="mt-12">
           <h1 class="text-5xl pb-2">Your collection</h1>
 
-          <div v-for="(coin, i) in allCoins" :key="`coin_${i}`">
-            <h2>{{ coin.name }}</h2>
-
-            <img :src="coin.imageUrl" :alt="coin.name" />
-          </div>
+          <coin-detail v-for="coin in allCoins" :key="`coin_${coin.id}`" v-bind="coin" />
         </div>
       </div>
     </div>
@@ -31,16 +27,22 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import CoinDetail from '@/components/CoinDetail.vue';
 
 export default {
+  components: {
+    CoinDetail
+  },
+
   middleware: 'auth',
 
   computed: mapState('coins', ['allCoins']),
 
   mounted() {
     this.getCoins();
+    this.getOwnedCoins();
   },
 
-  methods: mapActions('coins', ['getCoins'])
+  methods: mapActions('coins', ['getCoins', 'getOwnedCoins'])
 };
 </script>
