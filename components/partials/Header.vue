@@ -1,6 +1,6 @@
 <template>
   <header>
-    <template v-if="isUserAuthenticated">
+    <template v-if="isAuthenticated">
       <button type="button" @click="logout">
         Log out
       </button>
@@ -21,15 +21,24 @@ export default {
   computed: {
     ...mapState('user', ['email', 'photoUrl']),
 
-    ...mapGetters('user', ['isUserAuthenticated'])
+    ...mapGetters('user', ['isAuthenticated'])
   },
+
+  // watch: {
+  //   isAuthenticated: {
+  //     handler(val) {
+  //       if (val) {
+  //         this.$router.push('/about');
+  //       }
+  //     },
+  //     immediate: true
+  //   }
+  // },
 
   methods: {
     async login() {
-      try {
-        const GoogleAuthProvider = new this.$fireAuthObj.GoogleAuthProvider();
-        await this.$fireAuth.signInWithPopup(GoogleAuthProvider);
-      } catch (error) {}
+      const GoogleAuthProvider = new this.$fireAuthObj.GoogleAuthProvider();
+      await this.$fireAuth.signInWithPopup(GoogleAuthProvider);
     },
 
     async logout() {

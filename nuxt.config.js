@@ -72,16 +72,17 @@ export default {
           apiKey: 'AIzaSyCS1WF6oQbSRVowR4ubkFGm-95LuikXG_Y',
           authDomain: 'coinsly-c4330.firebaseapp.com',
           projectId: 'coinsly-c4330',
-          storageBucket: 'coinsly-c4330.appspot.com'
+          storageBucket: 'coinsly-c4330.appspot.com',
+          databaseURL: '',
+          messagingSenderId: '',
+          appId: ''
         },
         services: {
           auth: {
             initialize: {
               onAuthStateChangedAction: 'user/onAuthStateChangedAction'
             }
-          },
-          firestore: true,
-          storage: true
+          }
         }
       }
     ]

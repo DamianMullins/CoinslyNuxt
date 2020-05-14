@@ -1,15 +1,15 @@
 <template>
-  <section class="container">
+  <section class="container mx-auto">
     <div class="grid grid-cols-3 gap-8">
       <div class="col-span-1 bg-gray-200 px-4 pb-12">
         <Logo width="100%" height="250" />
-        <h3 class="text-xl mb-4">My Blog</h3>
+        <h3 class="text-xl mb-4">About</h3>
         <ul>
           <li>
             <nuxt-link to="/">Home</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/about">About</nuxt-link>
+            <nuxt-link to="/your-collection">Your collection</nuxt-link>
           </li>
         </ul>
       </div>
@@ -34,12 +34,8 @@ import Logo from '~/components/Logo.vue';
 export default {
   components: {
     Logo
-  }
+  },
+
+  middleware: 'auth'
 };
 </script>
-
-<style>
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-</style>

@@ -1,24 +1,28 @@
 <template>
-  <section class="container">
+  <section class="container mx-auto">
     <div class="grid grid-cols-3 gap-8">
       <div class="col-span-1 bg-gray-200 px-4 pb-12">
         <Logo width="100%" height="250" />
 
-        <h3 class="text-xl mb-4">My Blog</h3>
+        <h3 class="text-xl mb-4">Home</h3>
 
         <ul>
           <li>
             <nuxt-link to="/">Home</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/about">About</nuxt-link>
+            <nuxt-link to="/your-collection">Your collection</nuxt-link>
           </li>
         </ul>
       </div>
 
-      <div class="col-span-2">
+      <div
+        class="col-span-2 bg-light-elevatedSurface dark:bg-dark-elevatedSurface shadow-nuxt transition-colors duration-300 ease-linear"
+      >
         <div class="mt-12">
-          <div class="max-w-sm mx-auto flex p-6 bg-white rounded-lg shadow-xl">
+          <div
+            class="max-w-sm mx-auto flex p-6 bg-light-onSurfaceSecondary dark:bg-dark-onSurfaceSecondary rounded-lg shadow-xl"
+          >
             <div class="flex-shrink-0"></div>
             <div class="ml-6 pt-1">
               <h4 class="text-xl text-gray-900 leading-tight">ChitChat</h4>
@@ -66,9 +70,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-</style>

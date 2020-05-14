@@ -23,5 +23,5 @@ export const mutations = {
 };
 
 export const getters = {
-  isUserAuthenticated: ({ userId }) => userId !== ''
+  isAuthenticated: ({ userId }) => userId !== ''
 };

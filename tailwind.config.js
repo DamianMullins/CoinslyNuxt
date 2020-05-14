@@ -123,10 +123,6 @@ module.exports = {
     ]
   },
 
-  corePlugins: {
-    container: false
-  },
-
   plugins: [
     plugin(function ({ addVariant, theme, e, prefix, config }) {
       const colorModeVariants = ['light', 'dark'];
