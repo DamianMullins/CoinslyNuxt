@@ -5,8 +5,6 @@ export default {
 
   target: 'static',
 
-  ssr: true,
-
   modern: 'client',
 
   /*
@@ -60,7 +58,34 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/dotenv'],
+  modules: [
+    '@nuxtjs/axios',
+
+    '@nuxtjs/pwa',
+
+    '@nuxtjs/dotenv',
+
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyCS1WF6oQbSRVowR4ubkFGm-95LuikXG_Y',
+          authDomain: 'coinsly-c4330.firebaseapp.com',
+          projectId: 'coinsly-c4330',
+          storageBucket: 'coinsly-c4330.appspot.com'
+        },
+        services: {
+          auth: {
+            initialize: {
+              onAuthStateChangedAction: 'user/onAuthStateChangedAction'
+            }
+          },
+          firestore: true,
+          storage: true
+        }
+      }
+    ]
+  ],
 
   colorMode: {
     preference: 'dark' // disable system
