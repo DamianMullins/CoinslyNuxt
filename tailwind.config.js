@@ -124,7 +124,7 @@ module.exports = {
   },
 
   plugins: [
-    plugin(function ({ addVariant, theme, e, prefix, config }) {
+    plugin(function ({ addVariant, e }) {
       const colorModeVariants = ['light', 'dark'];
 
       colorModeVariants.forEach(mode => {
