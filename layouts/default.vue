@@ -3,7 +3,7 @@
     <nui-header />
 
     <main>
-      <nuxt />
+      <nuxt keep-alive />
     </main>
   </div>
 </template>

@@ -6,6 +6,15 @@ export const state = () => ({
 });
 
 export const actions = {
+  async login() {
+    const GoogleAuthProvider = new this.$fireAuthObj.GoogleAuthProvider();
+    await this.$fireAuth.signInWithPopup(GoogleAuthProvider);
+  },
+
+  async logout() {
+    await this.$fireAuth.signOut();
+  },
+
   onAuthStateChangedAction: ({ commit }, payload) => {
     commit('ON_AUTH_STATE_CHANGED_MUTATION', payload);
   }

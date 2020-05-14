@@ -2,8 +2,6 @@
   <section class="container mx-auto">
     <div class="grid grid-cols-3 gap-8">
       <div class="col-span-1 bg-gray-200 px-4 pb-12">
-        <Logo width="100%" height="250" />
-
         <h3 class="text-xl mb-4">Home</h3>
 
         <ul>
@@ -51,13 +49,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
-
 export default {
-  components: {
-    Logo
-  },
-
   methods: {
     setCurrentTheme() {
       this.$colorMode.preference =

@@ -2,8 +2,8 @@
   <section class="container mx-auto">
     <div class="grid grid-cols-3 gap-8">
       <div class="col-span-1 bg-gray-200 px-4 pb-12">
-        <Logo width="100%" height="250" />
-        <h3 class="text-xl mb-4">About</h3>
+        <h3 class="text-xl mb-4">Your collection</h3>
+
         <ul>
           <li>
             <nuxt-link to="/">Home</nuxt-link>
@@ -13,15 +13,16 @@
           </li>
         </ul>
       </div>
+
       <div class="col-span-2">
         <div class="mt-12">
-          <h1 class="text-5xl pb-2">Some title</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum
-          </p>
+          <h1 class="text-5xl pb-2">Your collection</h1>
+
+          <div v-for="(coin, i) in allCoins" :key="`coin_${i}`">
+            <h2>{{ coin.name }}</h2>
+
+            <img :src="coin.imageUrl" :alt="coin.name" />
+          </div>
         </div>
       </div>
     </div>
@@ -29,13 +30,17 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  components: {
-    Logo
+  middleware: 'auth',
+
+  computed: mapState('coins', ['allCoins']),
+
+  mounted() {
+    this.getCoins();
   },
 
-  middleware: 'auth'
+  methods: mapActions('coins', ['getCoins'])
 };
 </script>

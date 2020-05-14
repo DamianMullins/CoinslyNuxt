@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   computed: {
@@ -39,15 +39,6 @@ export default {
   //   }
   // },
 
-  methods: {
-    async login() {
-      const GoogleAuthProvider = new this.$fireAuthObj.GoogleAuthProvider();
-      await this.$fireAuth.signInWithPopup(GoogleAuthProvider);
-    },
-
-    async logout() {
-      await this.$fireAuth.signOut();
-    }
-  }
+  methods: mapActions('user', ['login', 'logout'])
 };
 </script>
