@@ -19,10 +19,7 @@ import { mapState, mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapState('user', {
-      email: ({ authUser }) => authUser.email,
-      photoUrl: ({ authUser }) => authUser.photoUrl
-    }),
+    ...mapState('user', ['email', 'photoUrl']),
 
     ...mapGetters('user', ['isUserAuthenticated'])
   },

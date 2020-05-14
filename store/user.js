@@ -1,10 +1,8 @@
 export const state = () => ({
-  authUser: {
-    uid: '',
-    displayName: '',
-    email: '',
-    photoUrl: ''
-  }
+  userId: '',
+  displayName: '',
+  email: '',
+  photoUrl: ''
 });
 
 export const actions = {
@@ -17,15 +15,13 @@ export const mutations = {
   ON_AUTH_STATE_CHANGED_MUTATION: (state, { authUser }) => {
     const { uid = '', displayName = '', email = '', photoURL = '' } = authUser || {};
 
-    state.authUser = {
-      uid,
-      displayName,
-      email,
-      photoUrl: photoURL
-    };
+    state.userId = uid;
+    state.displayName = displayName;
+    state.email = email;
+    state.photoUrl = photoURL;
   }
 };
 
 export const getters = {
-  isUserAuthenticated: ({ authUser }) => authUser.uid !== ''
+  isUserAuthenticated: ({ userId }) => userId !== ''
 };
