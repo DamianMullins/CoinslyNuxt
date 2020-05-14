@@ -5,7 +5,11 @@
         Log out
       </button>
 
-      <img :src="photoUrl" :alt="email" />
+      <img
+        :src="photoUrl"
+        :alt="email"
+        class="rounded-full h-12 w-12 flex items-center justify-center"
+      />
     </template>
 
     <button v-else type="button" @click="login">
