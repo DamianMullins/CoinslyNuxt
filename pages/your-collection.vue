@@ -1,7 +1,7 @@
 <template>
   <section class="container mx-auto">
     <div class="grid grid-cols-3 gap-8">
-      <div class="col-span-1 bg-gray-200 px-4 pb-12">
+      <div class="col-span-1 bg-light-elevatedSurface dark:bg-dark-elevatedSurface px-4 pb-12">
         <h3 class="text-xl mb-4">Your collection</h3>
 
         <ul>
