@@ -1,7 +1,5 @@
 <template>
-  <div class="p-8 text-center">
-    <!-- <h2>{{ name }}</h2> -->
-
+  <button class="p-8 mb-8 text-center scale-110:hover" @click="toggleOwned">
     <img
       :src="imageUrl"
       :alt="name"
@@ -13,14 +11,11 @@
         }
       ]"
     />
-
-    <!-- <p>Owned: {{ isOwned }}</p>
-    <p v-if="mintage">Mintage: {{ mintage }}</p> -->
-  </div>
+  </button>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   props: {
@@ -64,7 +59,19 @@ export default {
     ...mapState('coins', ['ownedCoins']),
 
     isOwned() {
-      return this.ownedCoins[this.id] !== undefined;
+      return this.ownedCoins.find(({ coinId }) => coinId === this.id) !== undefined;
+    }
+  },
+
+  methods: {
+    ...mapActions('coins', ['addOwnedCoin', 'removeOwnedCoin']),
+
+    toggleOwned() {
+      if (this.isOwned) {
+        this.removeOwnedCoin(this.id);
+      } else {
+        this.addOwnedCoin(this.id);
+      }
     }
   }
 };

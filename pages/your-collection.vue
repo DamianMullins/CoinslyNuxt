@@ -1,6 +1,6 @@
 <template>
   <section class="container mx-auto">
-    <h1 class="text-5xl pb-2">Your collection</h1>
+    <h1 class="text-4xl pb-2 tracking-tight">Your collection</h1>
 
     <section class="flex flex-wrap items-center justify-between">
       <coin-detail v-for="coin in allCoins" :key="`coin_${coin.id}`" v-bind="coin" />
@@ -17,7 +17,7 @@ export default {
     CoinDetail
   },
 
-  middleware: 'auth',
+  // middleware: 'auth',
 
   computed: mapState('coins', ['allCoins']),
 
