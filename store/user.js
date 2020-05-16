@@ -15,10 +15,12 @@ export const actions = {
 
   async logout() {
     await this.$fireAuth.signOut();
+    this.$router.push({ name: 'index' });
   },
 
-  onAuthStateChangedAction: ({ commit }, payload) => {
-    commit(USER_SET_DETAILS, payload);
+  async onAuthStateChangedAction({ commit }, payload) {
+    await commit(USER_SET_DETAILS, payload);
+    this.$router.push({ name: 'your-collection' });
   }
 };
 

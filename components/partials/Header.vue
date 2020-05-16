@@ -4,7 +4,7 @@
   >
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <svg
-        class="fill-current h-8 w-8 mr-2"
+        class="fill-current h-10 mr-2"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 484.357 484.357"
       >
@@ -16,12 +16,12 @@
         />
       </svg>
 
-      <span class="font-semibold text-2xl tracking-tight">Coinsly</span>
+      <span class="font-semibold text-3xl tracking-tight">Coinsly</span>
     </div>
 
     <div class="block lg:hidden">
       <button
-        class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
+        class="flex items-center px-3 py-3 border rounded hover:text-white"
         @click="toggleMenu"
       >
         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -37,26 +37,14 @@
 
     <div
       :class="[
-        'text-sm lg:flex lg:items-center lg:w-auto',
+        'w-full block text-sm lg:flex lg:items-center lg:w-auto',
         {
           hidden: !showMenu
         }
       ]"
     >
-      <a href="#responsive-header" class="block mt-4 lg:mt-0 text-teal-200 hover:text-white mr-4">
-        Docs
-      </a>
-
-      <a href="#responsive-header" class="block mt-4 lg:mt-0 text-teal-200 hover:text-white mr-4">
-        Examples
-      </a>
-
-      <a href="#responsive-header" class="block mt-4 lg:mt-0 text-teal-200 hover:text-white mr-4">
-        Blog
-      </a>
-
       <button
-        class="px-4 flex items-center block mt-4 lg:mt-0 mr-4 bg-gray-200 dark:bg-dark-surface dark:text-dark-onSurfaceSecondary rounded-full h-10 outline-none text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear"
+        class="px-4 flex items-center block mt-4 mb-2 mr-4 lg:my-0 bg-gray-200 dark:bg-dark-surface dark:text-dark-onSurfaceSecondary rounded-full h-10 outline-none text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear"
         @click="setCurrentTheme"
       >
         <span
@@ -87,25 +75,35 @@
         <span class="inline-block font-medium mr-1">{{ themeCopy }}</span>
       </button>
 
+      <nuxt-link
+        class="block py-3 lg:my-0 lg:mr-4 light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear"
+        :to="{ name: 'index' }"
+      >
+        Home
+      </nuxt-link>
+
+      <nuxt-link
+        class="block py-3 lg:my-0 lg:mr-4 light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear"
+        :to="{ name: 'your-collection' }"
+      >
+        Collection
+      </nuxt-link>
+
       <template v-if="isAuthenticated">
         <button
-          class="block mt-4 lg:mt-0 text-teal-200 hover:text-white mr-4 font-medium"
+          class="block py-3 lg:my-0 lg:mr-4 light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear font-medium"
           type="button"
           @click="logout"
         >
           Log out
         </button>
 
-        <img
-          class="rounded-full h-10 block mt-4 lg:mt-0 text-teal-200 hover:text-white"
-          :src="photoUrl"
-          :alt="email"
-        />
+        <img class="rounded-full h-10" :src="photoUrl" :alt="email" />
       </template>
 
       <button
         v-else
-        class="block mt-4 lg:mt-0 text-teal-200 hover:text-white mr-4 font-medium"
+        class="block py-3 lg:my-0 lg:mr-4 light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear font-medium"
         type="button"
         @click="login"
       >

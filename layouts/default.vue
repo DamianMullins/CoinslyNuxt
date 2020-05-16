@@ -2,7 +2,7 @@
   <div>
     <nui-header />
 
-    <main>
+    <main class="my-8">
       <nuxt keep-alive />
     </main>
   </div>

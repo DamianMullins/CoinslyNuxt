@@ -1,20 +1,21 @@
 <template>
-  <div>
-    <h2>{{ name }}</h2>
+  <div class="p-8 text-center">
+    <!-- <h2>{{ name }}</h2> -->
 
     <img
       :src="imageUrl"
       :alt="name"
       :class="[
-        'rounded-full h-40 w-40 flex items-center justify-center',
+        'rounded-full mx-auto w-32 hover:opacity-100',
         {
-          'opacity-75': !isOwned
+          'border-4 border-nuxt-lightgreen': isOwned,
+          'opacity-50 transition-opacity duration-300 ease-linear': !isOwned
         }
       ]"
     />
 
-    <p>Owned: {{ isOwned }}</p>
-    <p v-if="mintage">Mintage: {{ mintage }}</p>
+    <!-- <p>Owned: {{ isOwned }}</p>
+    <p v-if="mintage">Mintage: {{ mintage }}</p> -->
   </div>
 </template>
 
