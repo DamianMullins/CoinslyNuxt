@@ -2,10 +2,12 @@ const COINS_ADD_ALL = 'COINS_ADD_ALL';
 const COINS_ADD_ALL_OWNED = 'COINS_ADD_ALL_OWNED';
 const COINS_ADD_OWNED = 'COINS_ADD_OWNED';
 const COINS_REMOVE_OWNED = 'COINS_REMOVE_OWNED';
+const COINS_FILTER_DENOMINATION = 'COINS_FILTER_DENOMINATION';
 
 export const state = () => ({
   allCoins: [],
-  ownedCoins: []
+  ownedCoins: [],
+  denomination: ''
 });
 
 export const actions = {
@@ -64,6 +66,10 @@ export const actions = {
     ownedRef.forEach(o => o.ref.delete());
 
     commit(COINS_REMOVE_OWNED, coinId);
+  },
+
+  setDenomination({ commit }, denomination) {
+    commit(COINS_FILTER_DENOMINATION, denomination);
   }
 };
 
@@ -82,11 +88,30 @@ export const mutations = {
 
   [COINS_REMOVE_OWNED]: (state, coinId) => {
     state.ownedCoins = state.ownedCoins.filter(o => o.coinId !== coinId);
+  },
+
+  [COINS_FILTER_DENOMINATION]: (state, denomination) => {
+    state.denomination = denomination;
   }
 };
 
 export const getters = {
   hasCoins: ({ allCoins }) => allCoins.length > 0,
 
-  hasOwnedCoins: ({ ownedCoins }) => ownedCoins.length > 0
+  hasOwnedCoins: ({ ownedCoins }) => ownedCoins.length > 0,
+
+  denominations: ({ allCoins }) => [
+    ...new Set(
+      allCoins.reduce((prev, coin) => {
+        if (coin.denomination) {
+          prev.push(coin.denomination);
+        }
+
+        return prev;
+      }, [])
+    )
+  ],
+
+  filteredCoins: ({ allCoins, denomination }) =>
+    allCoins.filter(coin => (denomination ? coin.denomination === denomination : true))
 };

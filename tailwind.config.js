@@ -120,7 +120,8 @@ module.exports = {
       'light',
       'dark:hover',
       'light:hover'
-    ]
+    ],
+    opacity: ['responsive', 'hover', 'focus', 'disabled']
   },
 
   plugins: [

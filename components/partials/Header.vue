@@ -1,10 +1,8 @@
 <template>
-  <nav
-    class="flex items-center justify-between flex-wrap bg-light-elevatedSurface dark:bg-dark-elevatedSurface p-6"
-  >
+  <nav class="flex items-center justify-between flex-wrap light-surface dark:bg-dark-surface p-6">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <svg
-        class="fill-current h-10 mr-2"
+        class="fill-current h-10 mr-4"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 484.357 484.357"
       >
@@ -44,7 +42,7 @@
       ]"
     >
       <button
-        class="px-4 flex items-center block mt-4 mb-2 mr-4 lg:my-0 bg-gray-200 dark:bg-dark-surface dark:text-dark-onSurfaceSecondary rounded-full h-10 outline-none text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear"
+        class="px-4 flex items-center block mt-4 mb-2 mr-4 lg:my-0 bg-gray-200 dark:bg-dark-elevatedSurface rounded-full h-10 outline-none text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen transition-colors duration-300 ease-linear"
         @click="setCurrentTheme"
       >
         <span
@@ -76,7 +74,7 @@
       </button>
 
       <nuxt-link
-        class="block py-3 lg:my-0 lg:mr-4 light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear"
+        class="block py-3 lg:my-0 lg:mr-4 text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen transition-colors duration-300 ease-linear"
         :to="{ name: 'index' }"
       >
         Home

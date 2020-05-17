@@ -1,5 +1,14 @@
 <template>
-  <button class="p-8 mb-8 text-center scale-110:hover" @click="toggleOwned">
+  <button
+    :class="[
+      'p-8 mb-8 text-center scale-110:hover',
+      {
+        'disabled:opacity-75': isLoading
+      }
+    ]"
+    :disabled="isLoading"
+    @click="toggleOwned"
+  >
     <img
       :src="imageUrl"
       :alt="name"
@@ -55,6 +64,10 @@ export default {
     }
   },
 
+  data: () => ({
+    isLoading: false
+  }),
+
   computed: {
     ...mapState('coins', ['ownedCoins']),
 
@@ -66,12 +79,16 @@ export default {
   methods: {
     ...mapActions('coins', ['addOwnedCoin', 'removeOwnedCoin']),
 
-    toggleOwned() {
+    async toggleOwned() {
+      this.isLoading = true;
+
       if (this.isOwned) {
-        this.removeOwnedCoin(this.id);
+        await this.removeOwnedCoin(this.id);
       } else {
-        this.addOwnedCoin(this.id);
+        await this.addOwnedCoin(this.id);
       }
+
+      this.isLoading = false;
     }
   }
 };
