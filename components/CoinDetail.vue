@@ -13,9 +13,8 @@
       :src="imageUrl"
       :alt="name"
       :class="[
-        'rounded-full mx-auto w-32 hover:opacity-100',
+        'rounded-full mx-auto w-32 h-32 hover:opacity-100',
         {
-          'border-4 border-nuxt-lightgreen': isOwned,
           'opacity-50 transition-opacity duration-300 ease-linear': !isOwned
         }
       ]"

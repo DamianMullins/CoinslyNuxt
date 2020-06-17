@@ -2,12 +2,15 @@ const COINS_ADD_ALL = 'COINS_ADD_ALL';
 const COINS_ADD_ALL_OWNED = 'COINS_ADD_ALL_OWNED';
 const COINS_ADD_OWNED = 'COINS_ADD_OWNED';
 const COINS_REMOVE_OWNED = 'COINS_REMOVE_OWNED';
-const COINS_FILTER_DENOMINATION = 'COINS_FILTER_DENOMINATION';
+const COINS_SET_FILTER_STATUS = 'COINS_SET_FILTER_STATUS';
+const COINS_SET_FILTER_DENOMINATION = 'COINS_SET_FILTER_DENOMINATION';
 
 export const state = () => ({
   allCoins: [],
   ownedCoins: [],
-  denomination: ''
+  statuses: ['All', 'Needed', 'Owned'],
+  statusFilter: '',
+  denominationFilter: ''
 });
 
 export const actions = {
@@ -68,8 +71,9 @@ export const actions = {
     commit(COINS_REMOVE_OWNED, coinId);
   },
 
-  setDenomination({ commit }, denomination) {
-    commit(COINS_FILTER_DENOMINATION, denomination);
+  setFilters({ commit }, { status, denomination }) {
+    commit(COINS_SET_FILTER_STATUS, status);
+    commit(COINS_SET_FILTER_DENOMINATION, denomination);
   }
 };
 
@@ -90,8 +94,12 @@ export const mutations = {
     state.ownedCoins = state.ownedCoins.filter(o => o.coinId !== coinId);
   },
 
-  [COINS_FILTER_DENOMINATION]: (state, denomination) => {
-    state.denomination = denomination;
+  [COINS_SET_FILTER_STATUS]: (state, status) => {
+    state.statusFilter = status;
+  },
+
+  [COINS_SET_FILTER_DENOMINATION]: (state, denomination) => {
+    state.denominationFilter = denomination;
   }
 };
 
@@ -112,6 +120,20 @@ export const getters = {
     )
   ],
 
-  filteredCoins: ({ allCoins, denomination }) =>
-    allCoins.filter(coin => (denomination ? coin.denomination === denomination : true))
+  filteredCoins: ({ allCoins, ownedCoins, statusFilter, denominationFilter }) =>
+    allCoins
+      .filter(coin => (denominationFilter ? coin.denomination === denominationFilter : true))
+      .filter(coin => {
+        if (statusFilter) {
+          const ownedCoin = ownedCoins.find(({ coinId }) => coinId === coin.id);
+
+          if (statusFilter === 'Needed') {
+            return !ownedCoin;
+          } else if (statusFilter === 'Owned') {
+            return ownedCoin;
+          }
+        }
+
+        return true;
+      })
 };

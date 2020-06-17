@@ -1,5 +1,7 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap light-surface dark:bg-dark-surface p-6">
+  <nav
+    class="flex items-center justify-between flex-wrap bg-light-surface dark:bg-dark-surface p-6"
+  >
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <svg
         class="fill-current h-10 mr-4"
@@ -91,7 +93,7 @@
         <button
           class="block py-3 lg:my-0 lg:mr-4 light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear font-medium"
           type="button"
-          @click="logout"
+          @click="onLogout"
         >
           Log out
         </button>
@@ -103,7 +105,7 @@
         v-else
         class="block py-3 lg:my-0 lg:mr-4 light:hover:text-nuxt-lightgreen dark:hover:text-nuxt-lightgreen text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear font-medium"
         type="button"
-        @click="login"
+        @click="onLogin"
       >
         Log in
       </button>
@@ -153,6 +155,16 @@ export default {
 
     setCurrentTheme() {
       this.$colorMode.preference = this.isDarkTheme ? 'light' : 'dark';
+    },
+
+    async onLogin() {
+      await this.login();
+      this.$router.push({ name: 'your-collection' });
+    },
+
+    async onLogout() {
+      await this.logout();
+      this.$router.push({ name: 'index' });
     }
   }
 };
