@@ -69,10 +69,10 @@ export default {
       '@nuxtjs/firebase',
       {
         config: {
-          apiKey: 'AIzaSyCS1WF6oQbSRVowR4ubkFGm-95LuikXG_Y',
-          authDomain: 'coinsly-c4330.firebaseapp.com',
-          projectId: 'coinsly-c4330',
-          storageBucket: 'coinsly-c4330.appspot.com',
+          apiKey: process.env.FIREBASE_API_KEY,
+          authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+          projectId: process.env.FIREBASE_PROJECT_ID,
+          storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
           databaseURL: '',
           messagingSenderId: '',
           appId: ''
