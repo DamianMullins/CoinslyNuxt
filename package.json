@@ -11,7 +11,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "lint-staged": {
     "*.{js,vue}": "yarn lint",
@@ -23,12 +25,13 @@
     }
   },
   "dependencies": {
-    "@nuxtjs/axios": "5.11.0",
+    "@nuxtjs/axios": "5.12.3",
     "@nuxtjs/dotenv": "1.4.1",
-    "@nuxtjs/firebase": "6.0.1",
+    "@nuxtjs/firebase": "6.1.1",
     "@nuxtjs/pwa": "3.0.0-beta.20",
-    "firebase": "7.15.1",
-    "nuxt": "2.12.2"
+    "firebase": "8.0.1",
+    "nuxt": "2.12.2",
+    "snyk": "^1.437.3"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "1.0.0",
@@ -61,5 +64,6 @@
     "last 2 Firefox versions",
     "last 2 Edge versions",
     "last 3 Safari versions"
-  ]
+  ],
+  "snyk": true
 }
